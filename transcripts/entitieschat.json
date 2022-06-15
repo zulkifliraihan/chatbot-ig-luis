@@ -1,0 +1,163 @@
+{
+  "intents": [
+    {
+      "name": "greetings"
+    },
+    {
+      "name": "scholarship"
+    },
+    {
+      "name": "fee"
+    },
+    {
+      "name": "program"
+    },
+    {
+      "name": "apply"
+    },
+    {
+      "name": "facilities"
+    }
+  ],
+  "entities": [],
+  "composites": [],
+  "closedLists": [],
+  "regex_entities": [],
+  "model_features": [],
+  "regex_features": [],
+  "utterances": [
+    {
+      "text": "good evening",
+      "intent": "greetings",
+      "entities": []
+    },
+    {
+      "text": "hello",
+      "intent": "greetings",
+      "entities": []
+    },
+    {
+      "text": "hi",
+      "intent": "greetings",
+      "entities": []
+    },
+    {
+      "text": "hola",
+      "intent": "greetings",
+      "entities": []
+    },
+    {
+      "text": "howdy",
+      "intent": "greetings",
+      "entities": []
+    },
+    {
+      "text": "what's up",
+      "intent": "greetings",
+      "entities": []
+    },
+    {
+      "text": "good afternoon",
+      "intent": "greetings",
+      "entities": []
+    },
+    {
+      "text": "Do you have any scholarship information?",
+      "intent": "scholarship",
+      "entities": []
+    },
+    {
+      "text": "Do you have any fellowship information?",
+      "intent": "scholarship",
+      "entities": []
+    },
+    {
+      "text": "Where can i get information about scholarship?",
+      "intent": "scholarship",
+      "entities": []
+    },
+    {
+      "text": "scholarship information",
+      "intent": "scholarship",
+      "entities": []
+    },
+    {
+      "text": "How much the tuition fee in this university?",
+      "intent": "fee",
+      "entities": []
+    },
+    {
+      "text": "How many cost for study in this university?",
+      "intent": "fee",
+      "entities": []
+    },
+    {
+      "text": "Do you have Information for the price for study in this university?",
+      "intent": "fee",
+      "entities": []
+    },
+    {
+      "text": "cost",
+      "intent": "fee",
+      "entities": []
+    },
+    {
+      "text": "What faculties are available for the double degree program?",
+      "intent": "program",
+      "entities": []
+    },
+    {
+      "text": "Can i get list faculties for the double degree program?",
+      "intent": "program",
+      "entities": []
+    },
+    {
+      "text": "list faculty double degree",
+      "intent": "program",
+      "entities": []
+    },
+    {
+      "text": "list faculty in this university",
+      "intent": "program",
+      "entities": []
+    },
+    {
+      "text": "How to apply?",
+      "intent": "apply",
+      "entities": []
+    },
+    {
+      "text": "admission",
+      "intent": "apply",
+      "entities": []
+    },
+    {
+      "text": "where access for apply in this university?",
+      "intent": "apply",
+      "entities": []
+    },
+    {
+      "text": "What facilities in the university?",
+      "intent": "facilities",
+      "entities": []
+    },
+    {
+      "text": "Sampoerna University Facility",
+      "intent": "facilities",
+      "entities": []
+    },
+    {
+      "text": "facility",
+      "intent": "facilities",
+      "entities": []
+    }
+  ],
+  "patterns": [],
+  "patternAnyEntities": [],
+  "prebuiltEntities": [],
+  "luis_schema_version": "3.2.0",
+  "versionId": "0.1",
+  "name": "entitieschat",
+  "desc": "",
+  "culture": "en-us"
+}
