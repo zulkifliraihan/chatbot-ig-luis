@@ -30,6 +30,9 @@ const { SetupLuis } = require('./luis/setupLuis');
 const { DialogAndWelcomeBot } = require('./bots/dialogAndWelcomeBot');
 const { MainDialog } = require('./dialogs/mainDialog');
 
+// Webhooks Facebook Controller 
+const { verifyWebhookFacebook, getDataWebhookFacebook } = require('./controllers/webhookFacebook');
+
 const credentialsFactory = new ConfigurationServiceClientCredentialFactory({
     MicrosoftAppId: process.env.MicrosoftAppId,
     MicrosoftAppPassword: process.env.MicrosoftAppPassword,
@@ -93,6 +96,7 @@ const bot = new DialogAndWelcomeBot(conversationState, userState, dialog);
 // Create HTTP server
 const server = restify.createServer();
 server.use(restify.plugins.bodyParser());
+server.use(restify.plugins.queryParser());
 
 server.listen(process.env.port || process.env.PORT || 3898, function() {
     console.log(`\n${ server.name } listening to ${ server.url }`);
@@ -124,3 +128,9 @@ server.on('upgrade', async (req, socket, head) => {
 
     await streamingAdapter.process(req, socket, head, (context) => bot.run(context));
 });
+
+
+// Webhook for Facebook
+server.get('/webhook', verifyWebhookFacebook);
+
+server.post('/webhook', getDataWebhookFacebook);
