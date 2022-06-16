@@ -1,3 +1,13 @@
+// Log Console
+const { Console } = require("console");
+const fs = require("fs");
+
+// make a new logger
+const myLogger = new Console({
+    stdout: fs.createWriteStream("app.log"),
+    stderr: fs.createWriteStream("error.log"),
+});
+
 require('dotenv').config();
 
 
@@ -17,6 +27,11 @@ let verifyWebhookFacebook = async (req, res) => {
     let mode = req.query['hub.mode'];
     let token = req.query['hub.verify_token'];
     let challenge = req.query['hub.challenge'];
+
+    myLogger.log("Input Query : ");
+    myLogger.log(req.query);
+    myLogger.log("Verify Token : ");
+    myLogger.log(VERIFY_TOKEN);
 
     // Checks if a token and mode is in the query string of the request
     if (mode && token) {
