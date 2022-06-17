@@ -73,7 +73,7 @@ let verifyWebhookFacebook = async (req, res) => {
             
             // Responds with the challenge token from the request
             console.log('WEBHOOK_VERIFIED');
-            // res.send(200, challenge);
+            res.send(200, challenge);
 
         } else {
             // Responds with '403 Forbidden' if verify tokens do not match
