@@ -1,8 +1,0 @@
-Input Query : 
-{
-  'hub.verify_token': 'EAAE7icEtgukBAFyArr4JBWegQSJ2gZBmblw51Jo5CZABwtlUsXXINdhTPuYpGuITNvEe2ZC655uuvw4NwnWkbup0NFnATEKnvE2jZBk5CFa8v6PRvw0Cftnv54iyGqztZC6P9Id1QpumLxGqMNOk43GpZBQncmqTA6L127ZAoZCu2EQaycgH8s1y',
-  'hub.challenge': 'CHALLENGE_ACCEPTED',
-  'hub.mode': 'subscribe'
-}
-Verify Token : 
-EAAE7icEtgukBAFyArr4JBWegQSJ2gZBmblw51Jo5CZABwtlUsXXINdhTPuYpGuITNvEe2ZC655uuvw4NwnWkbup0NFnATEKnvE2jZBk5CFa8v6PRvw0Cftnv54iyGqztZC6P9Id1QpumLxGqMNOk43GpZBQncmqTA6L127ZAoZCu2EQaycgH8s1y

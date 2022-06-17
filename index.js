@@ -107,11 +107,7 @@ server.listen(process.env.port || process.env.PORT || 3898, function() {
 });
 
 server.get('/',  async (req, res, next) =>  {
-    res.send({
-        status: "OK",
-        message: "success",
-    });
-    return next();
+    return ("2022");
 });
 
 // Listen for incoming activities and route them to your bot main dialog.
