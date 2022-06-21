@@ -75,6 +75,8 @@ class MainDialog extends ComponentDialog {
         // Call LUIS and gather any potential intents details. (Note the TurnContext has the response to the prompt)
         const luisResult = await this.luisRecognizer.executeLuisQuery(stepContext.context);
         
+        console.log(`Var luisResult : ${stepContext.context}`);
+        console.log(stepContext.context);
         console.log(stepContext.context._activity.text);
         console.log(LuisRecognizer.topIntent(luisResult));
 

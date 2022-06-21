@@ -13,6 +13,20 @@ require('dotenv').config({ path: ENV_FILE });
 // Restify
 const restify = require('restify');
 
+// Vonage
+const { vonageInboundMessage, vonageStatusMessage } = require('./controllers/webhookVonage');
+
+const Vonage = require('@vonage/server-sdk');
+const MessengerText = require('@vonage/server-sdk/lib/Messages/MessengerText');
+
+const credentialsVonage = new Vonage({
+    apiKey: process.env.VONAGE_API_KEY,
+    apiSecret: process.env.VONAGE_API_SECRET,
+    applicationId: process.env.VONAGE_APPLICATION_ID,
+    privateKey: process.env.VONAGE_APPLICATION_PRIVATE_KEY_PATH
+}, {
+    apiHost: 'https://messages-sandbox.nexmo.com'
+});
 
 // Import required bot services.
 // See https://aka.ms/bot-services to learn more about the different parts of a bot.
@@ -26,7 +40,7 @@ const {
     UserState
 } = require('botbuilder');
 
-const { SetupLuis } = require('./luis/setupLuis');
+const { SetupLuis } = require('./setup/setupLuis');
 
 // This bot's main dialog.
 const { DialogAndWelcomeBot } = require('./bots/dialogAndWelcomeBot');
@@ -86,10 +100,11 @@ const conversationState = new ConversationState(memoryStorage);
 const userState = new UserState(memoryStorage);
 
 // If configured, pass in the SetupLuis.  (Defining it externally allows it to be mocked for tests)
-const { LuisAppId, LuisAPIKey, LuisAPIHostName } = process.env;
-const luisConfig = { applicationId: LuisAppId, endpointKey: LuisAPIKey, endpoint: LuisAPIHostName };
+// const { LuisAppId, LuisAPIKey, LuisAPIHostName } = process.env;
+// const luisConfig = { applicationId: LuisAppId, endpointKey: LuisAPIKey, endpoint: LuisAPIHostName };
 
-const luisRecognizer = new SetupLuis(luisConfig);
+// const luisRecognizer = new SetupLuis(luisConfig);
+const luisRecognizer = new SetupLuis();
 
 // Create the main dialog.
 const dialog = new MainDialog(luisRecognizer);
@@ -136,3 +151,65 @@ server.on('upgrade', async (req, socket, head) => {
 server.get('/webhook', verifyWebhookFacebook);
 
 server.post('/webhook', getDataWebhookFacebook);
+
+
+// Vonage
+
+server.post('/vonage/inbound', vonageInboundMessage)
+
+// server.post('/vonage/inbound', (req, res) => {
+//     console.log('Inbound : ');
+//     console.log(req.body);
+
+//     const fromId = req.body.from;
+//     const toId = req.body.to;
+//     const messageType = req.body.message_type;
+//     const channel = req.body.channel;
+
+//     // Vonage.Message
+//     if (channel == "messenger") {
+        
+//         if (messageType == "text") {
+//             credentialsVonage.messages.send(
+//                 new MessengerText(
+//                     'Hallo Cantik :)', // This is the message
+//                     fromId, // This is for the receive message 
+//                     toId, // This is for the sender message
+//                 ),
+//                 (err, data) => {
+//                     if (err) {
+//                         console.error(err);
+//                     } else {
+//                         console.log(data.message_uuid);
+//                     }
+//                 }
+//             );
+//         }
+//         else {
+//             credentialsVonage.messages.send(
+//                 new MessengerText(
+//                     'Hallo Cantik :)',
+//                     req.body.from,
+//                     req.body.to,
+//                 ),
+//                 (err, data) => {
+//                     if (err) {
+//                         console.error(err);
+//                     } else {
+//                         // console.log(data.message_uuid);
+//                     }
+//                 }
+//             );
+//         }
+
+//     }
+
+//     res.send('ok');
+
+// });
+
+server.post('/vonage/status', (req, res) => {
+    console.log('Status : ');
+    console.log(req.body);
+    res.send('ok');
+});
