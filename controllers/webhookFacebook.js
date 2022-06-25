@@ -11,47 +11,7 @@ const myLogger = new Console({
 require('dotenv').config();
 
 
-// let getDataWebhookFacebook = async (req, res, next) => {
-//     res.send(400, {
-//         status: "OK",
-//         message: "success webhook"
-//     });
-
-// }
-
-// let verifyWebhookFacebook = async (req, res) => {
-//     // Your verify token. Should be a random string.
-//     let VERIFY_TOKEN = process.env.FacebookPageAccessToken;
-
-//     // Parse the query params
-//     let mode = req.query['hub.mode'];
-//     let token = req.query['hub.verify_token'];
-//     let challenge = req.query['hub.challenge'];
-
-//     myLogger.log("Input Query : ");
-//     myLogger.log(req.query);
-//     myLogger.log("Verify Token : ");
-//     myLogger.log(VERIFY_TOKEN);
-
-//     // Checks if a token and mode is in the query string of the request
-//     if (mode && token) {
-
-//         // Checks the mode and token sent is correct
-//         if (mode === 'subscribe' && token === VERIFY_TOKEN) {
-            
-//             // Responds with the challenge token from the request
-//             console.log('WEBHOOK_VERIFIED');
-//             return challenge;
-//             // res.send(200, challenge);
-
-//         } else {
-//             // Responds with '403 Forbidden' if verify tokens do not match
-//             res.send(403);      
-//         }
-//     }
-// };
-
-let verifyWebhookFacebook = async (req, res) => {
+const verifyWebhookFacebook = async (req, res) => {
     // Your verify token. Should be a random string.
     let VERIFY_TOKEN = process.env.FacebookVerifyToken;
 
@@ -82,7 +42,7 @@ let verifyWebhookFacebook = async (req, res) => {
     }
 }
 
-let getDataWebhookFacebook = async (req, res) => {
+const getDataWebhookFacebook = async (req, res) => {
 
     // Parse the request body from the POST
     let body = req.body;
@@ -109,6 +69,7 @@ let getDataWebhookFacebook = async (req, res) => {
     }
 
 }
+
 
 module.exports = {
     verifyWebhookFacebook: verifyWebhookFacebook,
