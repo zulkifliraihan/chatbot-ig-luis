@@ -16,11 +16,6 @@ const idIgPrimary = process.env.IG_ID;
 const ig = withFbns(new IgApiClient());
 ig.state.generateDevice(usernameIg);
 
-// (async () => {
-//     const loggedInUser = await ig.account.login(usernameIg, passwordIg);
-//     console.log(loggedInUser)
-// })();
-
 class InstagramController {
     constructor() {
         this.initialize();
@@ -158,38 +153,3 @@ class InstagramController {
 }
 
 module.exports.InstagramController = InstagramController;
-
-// const webhook = async () => {
-//     const loggedInUser = await ig.account.login(usernameIg, passwordIg);
-//     console.log(loggedInUser);
-//     ig.fbns.on('push', logEvent('push'));
-    
-//     let i = 0;
-//     ig.fbns.on('auth', async auth => {
-//         // logs the auth
-
-//         if (i != 0) {
-//             const logEvent = logEvent('auth')(auth); 
-//         }
-//         i++;
-//         // console.log("Return Function On IF: ");
-//         // console.log(auth);
-
-
-//         //saves the auth
-//         // loggedInUser; 
-//     });
-
-//     await ig.fbns.connect();
-
-//     function logEvent(name) {
-    
-//         return (data) => {
-//             // const theMessage = data.message
-//             const theMessage = data.message.match(/:\s*([^:]+)$/);
-//             console.log(theMessage[1], data)
-//         };
-//     }
-// }
-
-// module.exports.webhook = webhook;

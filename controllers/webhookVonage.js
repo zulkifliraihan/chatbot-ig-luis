@@ -1,6 +1,5 @@
 require('dotenv').config();
 
-
 // Vonage
 const Vonage = require('@vonage/server-sdk');
 const MessengerText = require('@vonage/server-sdk/lib/Messages/MessengerText');
@@ -9,11 +8,9 @@ const { setupVonage } = require('../setup/setupVonage');
 const { LuisRecognizer } = require('botbuilder-ai');
 const { SetupLuis } = require('../setup/setupLuis');
 
-
+const luisRecognizer = new SetupLuis();
 
 const credentialsVonage = new setupVonage(process.env).isConfiguredVonage;
-
-const luisRecognizer = new SetupLuis();
 
 const vonageInboundMessage = async (req, res) => {
 
@@ -36,10 +33,6 @@ const vonageInboundMessage = async (req, res) => {
         if (messageType == "text") {
             const luisResult = await luisRecognizer.executeLuisQuery(receiveMessage);
             
-            // console.log(luisResult);
-            // console.log('The Result Luis : ');
-            // console.log(LuisRecognizer.topIntent(luisResult));
-
             const luisTopIntent = LuisRecognizer.topIntent(luisResult);
 
             switch (luisTopIntent) {
