@@ -14,19 +14,19 @@ require('dotenv').config({ path: ENV_FILE });
 const restify = require('restify');
 
 // Vonage
-const { vonageInboundMessage, vonageStatusMessage } = require('./controllers/webhookVonage');
+// const { vonageInboundMessage, vonageStatusMessage } = require('./controllers/webhookVonage');
 
-const Vonage = require('@vonage/server-sdk');
-const MessengerText = require('@vonage/server-sdk/lib/Messages/MessengerText');
+// const Vonage = require('@vonage/server-sdk');
+// const MessengerText = require('@vonage/server-sdk/lib/Messages/MessengerText');
 
-const credentialsVonage = new Vonage({
-    apiKey: process.env.VONAGE_API_KEY,
-    apiSecret: process.env.VONAGE_API_SECRET,
-    applicationId: process.env.VONAGE_APPLICATION_ID,
-    privateKey: process.env.VONAGE_APPLICATION_PRIVATE_KEY_PATH
-}, {
-    apiHost: 'https://messages-sandbox.nexmo.com'
-});
+// const credentialsVonage = new Vonage({
+//     apiKey: process.env.VONAGE_API_KEY,
+//     apiSecret: process.env.VONAGE_API_SECRET,
+//     applicationId: process.env.VONAGE_APPLICATION_ID,
+//     privateKey: process.env.VONAGE_APPLICATION_PRIVATE_KEY_PATH
+// }, {
+//     apiHost: 'https://messages-sandbox.nexmo.com'
+// });
 
 // Import required bot services.
 // See https://aka.ms/bot-services to learn more about the different parts of a bot.
@@ -155,7 +155,8 @@ server.post('/webhook', getDataWebhookFacebook);
 
 // Vonage
 
-server.post('/vonage/inbound', vonageInboundMessage)
+// server.post('/vonage/inbound', vonageInboundMessage)
+// server.post('/vonage/status', vonageStatusMessage)
 
 // server.post('/vonage/inbound', (req, res) => {
 //     console.log('Inbound : ');
@@ -208,8 +209,160 @@ server.post('/vonage/inbound', vonageInboundMessage)
 
 // });
 
-server.post('/vonage/status', (req, res) => {
-    console.log('Status : ');
-    console.log(req.body);
+// server.post('/vonage/status', (req, res) => {
+//     console.log('Status : ');
+//     console.log(req.body);
+//     res.send('ok');
+// });
+
+const { IgApiClient } = require('instagram-private-api');
+const { sample } = require('lodash');
+const { withFbnsAndRealtime, withFbns, withRealtime } = require('instagram_mqtt');
+
+// Instagram Private API
+
+server.get('/package/instagram-private-api', async (req, res) => {
+    const ig = new IgApiClient();
+
+    const usernameIg= '2022lulus';
+    const passwordIg= 'Shafana22';
+
+    ig.state.generateDevice(usernameIg);
+
+    await ig.simulate.preLoginFlow();
+
+    const loggedInUser = await ig.account.login(usernameIg, passwordIg);
+    const messageInbox = await ig.feed.directInbox().items();
+    const unread = messageInbox.filter( message => message.read_state > 0 );
+        
+    messageInbox.forEach(element => {
+        
+        console.log("Message Inbox");
+        console.log(element.last_permanent_item);
+    });
+
+    // console.log(loggedInUser);
+    // console.log(await ig.feed.directInbox().items());
+
+    // unread.forEach( (message) => {
+    //     console.log(`ThreadID: ${message.thread_id}`);
+        
+    //     // let date = moment(Number(message.last_permanent_item.timestamp) / 1000);
+
+    //     console.log(`Conversation with: ${message.thread_title}`);
+    //     // console.log(`Received at: ${date}`);
+    //     console.log(`Message: ${message.last_permanent_item.text}`);
+
+    // });
+
     res.send('ok');
+
 });
+
+server.get('/package/instagram-private-api-sendmessage', async (req, res) => {
+    const ig = new IgApiClient();
+
+    const usernameIg= '2022lulus';
+    const passwordIg= 'Shafana22';
+
+    ig.state.generateDevice(usernameIg);
+
+    await ig.simulate.preLoginFlow();
+    
+    const loggedInUser = await ig.account.login(usernameIg, passwordIg);
+    console.log(loggedInUser);
+    // setInterval(async() => {
+        process.nextTick(async () => await ig.simulate.postLoginFlow());
+        const userId = 1608525449;
+        const thread = ig.entity.directThread([userId.toString()]);
+        await thread.broadcastText('Message from node');
+
+    // }, 7000);
+
+    res.send('ok');
+
+});
+
+server.get('/package/instagram-private-api-v2', async (req, res) => {
+    var PrivateAPI = require('instagram-private-api');
+    var server = PrivateAPI.ProxyServer;
+
+    const usernameIg= '2022lulus';
+    const passwordIg= 'Shafana22';
+
+    server.run({
+        port: 8080,
+        socketPort: 8888,
+        host: "0.0.0.0",
+        databaseDir: './databases',
+        cookiesDir: './cookies'
+    });
+    
+    // this will run socket server 8888
+    
+    var ClientProxy = PrivateAPI.ProxyClient.V1;
+    var server = new ClientProxy.Server('0.0.0.0', '8080', '8888');
+    var session = new ClientProxy.Session(server);
+    
+    session.create(usernameIg, passwordIg)
+        .then(function(session) {
+             ClientProxy.Thread.subscribeAll(session, function(thread){
+                   // this -> socket connection
+                   console.log(thread, "thread change")
+              })
+        });
+
+    res.send('ok');
+
+});
+
+const { InstagramController } = require('./controllers/instagramController');
+
+new InstagramController();
+
+// const ig = new IgApiClient();
+const ig = withFbns(new IgApiClient());
+const usernameIg= '2022lulus';
+const passwordIg= 'Shafanea22';
+
+// (async () => {
+//     ig.state.generateDevice(usernameIg);
+//     // Execute all requests prior to authorization in the real Android application
+//     // Not required but recommended
+//     // await ig.simulate.preLoginFlow();
+//     const loggedInUser = await ig.account.login(usernameIg, passwordIg);
+//     ig.fbns.on('push', logEvent('push'));
+    
+//     let i = 0;
+//     ig.fbns.on('auth', async auth => {
+//         // logs the auth
+
+//         if (i != 0) {
+//             const logEvent = logEvent('auth')(auth); 
+//         }
+//         i++;
+//         // console.log("Return Function On IF: ");
+//         // console.log(auth);
+
+
+//         //saves the auth
+//         // loggedInUser; 
+//     });
+
+//     await ig.fbns.connect();
+//     // ig.realtime.on('receive', (topic, messages) => console.log('receive', topic, messages));
+//     // console.log(loggedInUser);
+// })();
+
+
+// function logEvent(name) {
+//     // (data) => {
+//     //     console.log(data.message)
+//     // }
+//     return (data) => {
+//         // const theMessage = data.message
+//         const theMessage = data.message.match(/:\s*([^:]+)$/);
+//         console.log(theMessage[1], data)
+//     };
+// }
+
