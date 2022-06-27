@@ -9,7 +9,6 @@ class SetupLuis {
         const luisConfig = { applicationId: LuisAppId, endpointKey: LuisAPIKey, endpoint: LuisAPIHostName };
 
         const luisIsConfigured = luisConfig && luisConfig.applicationId && luisConfig.endpointKey && luisConfig.endpoint;
-        // const luisIsConfigured = config && config.applicationId && config.endpointKey && config.endpoint;
         
         if (luisIsConfigured) {
             // Set the recognizer options depending on which endpoint version you want to use e.g v2 or v3.

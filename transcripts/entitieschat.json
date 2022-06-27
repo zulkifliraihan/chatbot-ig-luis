@@ -10,13 +10,22 @@
       "name": "fee"
     },
     {
-      "name": "program"
+      "name": "doubledegree"
     },
     {
-      "name": "apply"
+      "name": "admission"
+    },
+    {
+      "name": "faculty"
     },
     {
       "name": "facilities"
+    },
+    {
+      "name": "acceptanceperiod"
+    },
+    {
+      "name": "thanks"
     }
   ],
   "entities": [],
@@ -27,37 +36,92 @@
   "regex_features": [],
   "utterances": [
     {
-      "text": "good evening",
+      "text": "P",
       "intent": "greetings",
       "entities": []
     },
     {
-      "text": "hello",
+      "text": "Min",
       "intent": "greetings",
       "entities": []
     },
     {
-      "text": "hi",
+      "text": "Hi",
       "intent": "greetings",
       "entities": []
     },
     {
-      "text": "hola",
+      "text": "Halo",
       "intent": "greetings",
       "entities": []
     },
     {
-      "text": "howdy",
+      "text": "Hai",
       "intent": "greetings",
       "entities": []
     },
     {
-      "text": "what's up",
+      "text": "Selamat Pagi",
       "intent": "greetings",
       "entities": []
     },
     {
-      "text": "good afternoon",
+      "text": "Selamat Siang",
+      "intent": "greetings",
+      "entities": []
+    },
+    {
+      "text": "Selamat Sore",
+      "intent": "greetings",
+      "entities": []
+    },
+    {
+      "text": "Selamat Malam",
+      "intent": "greetings",
+      "entities": []
+    },
+    {
+      "text": "Good Morning",
+      "intent": "greetings",
+      "entities": []
+    },
+    {
+      "text": "Good Evening",
+      "intent": "greetings",
+      "entities": []
+    },
+    {
+      "text": "Good",
+      "intent": "greetings",
+      "entities": []
+    },
+    {
+      "text": "Pagi",
+      "intent": "greetings",
+      "entities": []
+    },
+    {
+      "text": "Siang",
+      "intent": "greetings",
+      "entities": []
+    },
+    {
+      "text": "Sore",
+      "intent": "greetings",
+      "entities": []
+    },
+    {
+      "text": "Malam",
+      "intent": "greetings",
+      "entities": []
+    },
+    {
+      "text": "Halo Min",
+      "intent": "greetings",
+      "entities": []
+    },
+    {
+      "text": "Min",
       "intent": "greetings",
       "entities": []
     },
@@ -82,6 +146,31 @@
       "entities": []
     },
     {
+      "text": "Studentship information",
+      "intent": "scholarship",
+      "entities": []
+    },
+    {
+      "text": "Apakah ada informasi terkait beasiswa?",
+      "intent": "scholarship",
+      "entities": []
+    },
+    {
+      "text": "Apakah beasiswa masih ada?",
+      "intent": "scholarship",
+      "entities": []
+    },
+    {
+      "text": "Informasi beasiswa",
+      "intent": "scholarship",
+      "entities": []
+    },
+    {
+      "text": "scholarship",
+      "intent": "scholarship",
+      "entities": []
+    },
+    {
       "text": "How much the tuition fee in this university?",
       "intent": "fee",
       "entities": []
@@ -97,43 +186,158 @@
       "entities": []
     },
     {
-      "text": "cost",
+      "text": "Can I know the price list?",
+      "intent": "fee",
+      "entities": []
+    },
+    {
+      "text": "Berapa biaya satu semester?",
+      "intent": "fee",
+      "entities": []
+    },
+    {
+      "text": "Bisakah saya tau bayaran per semester?",
+      "intent": "fee",
+      "entities": []
+    },
+    {
+      "text": "fee",
+      "intent": "fee",
+      "entities": []
+    },
+    {
+      "text": "the price",
+      "intent": "fee",
+      "entities": []
+    },
+    {
+      "text": "price",
       "intent": "fee",
       "entities": []
     },
     {
       "text": "What faculties are available for the double degree program?",
-      "intent": "program",
+      "intent": "doubledegree",
       "entities": []
     },
     {
       "text": "Can i get list faculties for the double degree program?",
-      "intent": "program",
+      "intent": "doubledegree",
       "entities": []
     },
     {
-      "text": "list faculty double degree",
-      "intent": "program",
+      "text": "list faculty for double degree program",
+      "intent": "doubledegree",
       "entities": []
     },
     {
-      "text": "list faculty in this university",
-      "intent": "program",
+      "text": "list faculty for dual degree program",
+      "intent": "doubledegree",
+      "entities": []
+    },
+    {
+      "text": "Jurusan apa saja yang menyediakan dua gelar?",
+      "intent": "doubledegree",
+      "entities": []
+    },
+    {
+      "text": "Fakultas yang bisa punya gelar ganda?",
+      "intent": "doubledegree",
+      "entities": []
+    },
+    {
+      "text": "Fakultas yang bisa two degree?",
+      "intent": "doubledegree",
+      "entities": []
+    },
+    {
+      "text": "program",
+      "intent": "doubledegree",
+      "entities": []
+    },
+    {
+      "text": "double degree",
+      "intent": "doubledegree",
       "entities": []
     },
     {
       "text": "How to apply?",
-      "intent": "apply",
+      "intent": "admission",
       "entities": []
     },
     {
       "text": "admission",
-      "intent": "apply",
+      "intent": "admission",
       "entities": []
     },
     {
       "text": "where access for apply in this university?",
-      "intent": "apply",
+      "intent": "admission",
+      "entities": []
+    },
+    {
+      "text": "Bagaimana cara mendaftar?",
+      "intent": "admission",
+      "entities": []
+    },
+    {
+      "text": "Cara daftar",
+      "intent": "admission",
+      "entities": []
+    },
+    {
+      "text": "apply",
+      "intent": "admission",
+      "entities": []
+    },
+    {
+      "text": "admission",
+      "intent": "admission",
+      "entities": []
+    },
+    {
+      "text": "daftar",
+      "intent": "admission",
+      "entities": []
+    },
+    {
+      "text": "Ada fakultas apa saja?",
+      "intent": "faculty",
+      "entities": []
+    },
+    {
+      "text": "fakultas",
+      "intent": "faculty",
+      "entities": []
+    },
+    {
+      "text": "faculties",
+      "intent": "faculty",
+      "entities": []
+    },
+    {
+      "text": "faculty",
+      "intent": "faculty",
+      "entities": []
+    },
+    {
+      "text": "Engineering",
+      "intent": "faculty",
+      "entities": []
+    },
+    {
+      "text": "Education",
+      "intent": "faculty",
+      "entities": []
+    },
+    {
+      "text": "Bussiness",
+      "intent": "faculty",
+      "entities": []
+    },
+    {
+      "text": "list faculty",
+      "intent": "faculty",
       "entities": []
     },
     {
@@ -147,8 +351,73 @@
       "entities": []
     },
     {
-      "text": "facility",
+      "text": "Fasilitas apa saja di Sampoerna University?",
       "intent": "facilities",
+      "entities": []
+    },
+    {
+      "text": "facilities",
+      "intent": "facilities",
+      "entities": []
+    },
+    {
+      "text": "Facility",
+      "intent": "facilities",
+      "entities": []
+    },
+    {
+      "text": "When student Acceptance period open?",
+      "intent": "acceptanceperiod",
+      "entities": []
+    },
+    {
+      "text": "When student Acceptance period start?",
+      "intent": "acceptanceperiod",
+      "entities": []
+    },
+    {
+      "text": "kapan penerimaan mahasiswa baru?",
+      "intent": "acceptanceperiod",
+      "entities": []
+    },
+    {
+      "text": "penerimaan mahasiswa baru?",
+      "intent": "acceptanceperiod",
+      "entities": []
+    },
+    {
+      "text": "acceptance",
+      "intent": "acceptanceperiod",
+      "entities": []
+    },
+    {
+      "text": "mahasiswa baru",
+      "intent": "acceptanceperiod",
+      "entities": []
+    },
+    {
+      "text": "thank you",
+      "intent": "thanks",
+      "entities": []
+    },
+    {
+      "text": "thanks",
+      "intent": "thanks",
+      "entities": []
+    },
+    {
+      "text": "terima kasih",
+      "intent": "thanks",
+      "entities": []
+    },
+    {
+      "text": "makasih",
+      "intent": "thanks",
+      "entities": []
+    },
+    {
+      "text": "thx",
+      "intent": "thanks",
       "entities": []
     }
   ],

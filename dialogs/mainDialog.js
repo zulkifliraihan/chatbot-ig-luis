@@ -4,6 +4,7 @@
 const { MessageFactory, InputHints } = require('botbuilder');
 const { LuisRecognizer } = require('botbuilder-ai');
 const { ComponentDialog, DialogSet, DialogTurnStatus, TextPrompt, WaterfallDialog } = require('botbuilder-dialogs');
+const { luisRecognizeMessage } = require('../helpers/luisRecognizeMessage');
 
 const MAIN_WATERFALL_DIALOG = 'mainWaterfallDialog';
 
@@ -72,57 +73,11 @@ class MainDialog extends ComponentDialog {
             return await stepContext.beginDialog('error');
         }
 
-        // Call LUIS and gather any potential intents details. (Note the TurnContext has the response to the prompt)
-        const luisResult = await this.luisRecognizer.executeLuisQuery(stepContext.context);
+        const textMessage = stepContext.context._activity.text;
         
-        console.log(`Var luisResult : ${stepContext.context}`);
-        console.log(stepContext.context);
-        console.log(stepContext.context._activity.text);
-        console.log(LuisRecognizer.topIntent(luisResult));
+        const resultRecognizeMessage = await new luisRecognizeMessage().recognizer(textMessage);
 
-        switch (LuisRecognizer.topIntent(luisResult)) {
-            
-            case 'greetings': {
-                const greetingsText = 'Hallo, what can i help for you?';
-                await stepContext.context.sendActivity(greetingsText, greetingsText, InputHints.IgnoringInput);
-                break;
-            }
-
-            case 'scholarship': {
-                const scholarshipText = 'Sorry, we already close our scholarship in this year. Don’t forget to follow our Instagram to get the newest information from us. Thank you!.';
-                await stepContext.context.sendActivity(scholarshipText, scholarshipText, InputHints.IgnoringInput);
-                break;
-            }
-
-            case 'fee': {
-                const feeText = 'For the enrollment fee is 20 million rupiah, or you access the information at https://www.sampoernauniversity.ac.id/admissions/tuition-and-fees/'
-                await stepContext.context.sendActivity(feeText, feeText, InputHints.IgnoringInput);
-                break;
-            }
-
-            case 'program': {
-                const feeText = 'Double degree with Arizona University is available for Faculty of Engineering and Technology: Mechanical Engineering, Industrial Engineering, Computer Science / Electrical Computer Engineering, and Information System / Applied Computing. Then, for Faculty of Business is available only for Management.'
-                await stepContext.context.sendActivity(feeText, feeText, InputHints.IgnoringInput);
-                break;
-            }
-
-            case 'apply': {
-                const feeText = 'You can access it on: https://www.sampoernauniversity.ac.id/admissions/how-to-apply-sampoerna-university-now/'
-                await stepContext.context.sendActivity(feeText, feeText, InputHints.IgnoringInput);
-                break;
-            }
-            case 'facilities': {
-                const feeText = 'We have the virtual campus tour; you can access it on: https://panomatics.com/virtualtours/in/sampoernauniversity/index.html'
-                await stepContext.context.sendActivity(feeText, feeText, InputHints.IgnoringInput);
-                break;
-            }
-    
-            default: {
-                // Catch all for unhandled intents
-                const didntUnderstandMessageText = `Sorry, I didn't get that. Please try asking in a different way or you can access our website for different information https://www.sampoernauniversity.ac.id/`;
-                await stepContext.context.sendActivity(didntUnderstandMessageText, didntUnderstandMessageText, InputHints.IgnoringInput);
-            }
-        }
+        await stepContext.context.sendActivity(resultRecognizeMessage, resultRecognizeMessage, InputHints.IgnoringInput);
 
         return await stepContext.next();
     }

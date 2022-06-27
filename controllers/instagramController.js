@@ -4,10 +4,8 @@ const { IgApiClient } = require('instagram-private-api');
 const { sample } = require('lodash');
 const { withFbnsAndRealtime, withFbns, withRealtime } = require('instagram_mqtt');
 
-const { LuisRecognizer } = require('botbuilder-ai');
-const { SetupLuis } = require('../setup/setupLuis');
+const { luisRecognizeMessage } = require('../helpers/luisRecognizeMessage');
 
-const luisRecognizer = new SetupLuis();
 
 const usernameIg = process.env.IG_USERNAME;
 const passwordIg = process.env.IG_PASSWORD;
@@ -32,6 +30,7 @@ class InstagramController {
     }
 
    async messageInbox() {
+       let i = 0;
         setInterval(async() => {
 
             const messageInbox = await ig.feed.directInbox().items();
@@ -40,71 +39,24 @@ class InstagramController {
                 
                 const arrDataMessage = element.last_permanent_item;
     
+                console.log(arrDataMessage);
                 const userIdMessage = arrDataMessage.user_id;
                 const textMessage = arrDataMessage.text;
-
+                
                 const matchingId = userIdMessage != idIgPrimary;
 
                 if (matchingId) {
 
-                    const resultRecognizeMessage = await this.recognizeMessageLuis(textMessage);
+                    const resultRecognizeMessage = await new luisRecognizeMessage().recognizer(textMessage);
                     const sendReplyMessage = this.sendMessage(userIdMessage, resultRecognizeMessage);
                     
                 }
 
             }));
 
-        }, 10000);
+            console.log(`Done Interval Part : ${i++}`);
 
-    }
-
-    async recognizeMessageLuis (textMessage = "Hallo") {
-        const luisResult = await luisRecognizer.executeLuisQuery(textMessage);
-
-        const luisTopIntent = LuisRecognizer.topIntent(luisResult);
-        
-        let replyMessage = `Sorry we can't understand what you mean. Could you clarify again that again?. Or you can access our website for different information https://www.sampoernauniversity.ac.id/`;
-
-        switch (luisTopIntent) {
-            
-            case 'greetings': {
-                replyMessage = 'Hi, I’m a bot. What can I help for you?';
-                break;
-            }
-
-            case 'scholarship': {
-                replyMessage = 'Sorry, we already close our scholarship in this year. Don’t forget to follow our Instagram to get the newest information from us. Thank you!';
-                break;
-            }
-
-            case 'fee': {
-                replyMessage = 'For the enrollment fee is 20 million rupiah, or you access the information at https://www.sampoernauniversity.ac.id/admissions/tuition-and-fees/'
-                break;
-            }
-
-            case 'program': {
-                replyMessage = 'Double degree with Arizona University is available for Faculty of Engineering and Technology: Mechanical Engineering, Industrial Engineering, Computer Science / Electrical Computer Engineering, and Information System / Applied Computing. Then, for Faculty of Business is available only for Management.'
-                break;
-            }
-
-            case 'apply': {
-                replyMessage = 'You can access it on: https://www.sampoernauniversity.ac.id/admissions/how-to-apply-sampoerna-university-now/'
-                break;
-            }
-            case 'facilities': {
-                replyMessage = 'We have the virtual campus tour; you can access it on: https://panomatics.com/virtualtours/in/sampoernauniversity/index.html'
-                break;
-            }
-    
-            default: {
-                // Catch all for unhandled intents
-                replyMessage = `Sorry we can't understand what you mean. Could you clarify again that again?. Or you can access our website for different information https://www.sampoernauniversity.ac.id/`;
-                break;
-            }
-        }
-
-        // console.log(replyMessage, textMessage);
-        return replyMessage;
+        }, 100000);
 
     }
 
