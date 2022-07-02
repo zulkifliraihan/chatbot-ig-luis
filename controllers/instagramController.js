@@ -90,19 +90,31 @@ class InstagramController {
 
     logEvent(name) {
         return async (data) => {
-            const theMessage = data.message.match(/:\s*([^:]+)$/);
-            const textMessage= theMessage[1];
+            const typeWebhook = data.collapseKey;
+            if (typeWebhook == "direct_v2_message") {
+                const typeMessageWebhook = data.pushCategory;
+                  
+                const theMessage = data.message.match(/:\s*([^:]+)$/);
+                const textMessage= theMessage[1];
+    
+                const userIdMessage = data.sourceUserId;
+    
+                const matchingId = userIdMessage != idIgPrimary;
+    
+                if (matchingId) {
+    
+                    if (typeMessageWebhook == "direct_v2_text") {
+                        
+                        const resultRecognizeMessage = await new luisRecognizeMessage().recognizer(textMessage);
+                        const sendReplyMessage = this.sendMessage(userIdMessage, resultRecognizeMessage);
 
-            const userIdMessage = data.sourceUserId;
-
-            const matchingId = userIdMessage != idIgPrimary;
-
-            if (matchingId) {
-
-                const resultRecognizeMessage = await this.recognizeMessageLuis(textMessage);
-                console.log(resultRecognizeMessage);
-                const sendReplyMessage = this.sendMessage(userIdMessage, resultRecognizeMessage);
-                
+                    }
+                    else {
+                        const replyMessage = "Sorry we can't understand what you mean. Could you clarify again that again?. Or you can access our website for different information https://www.sampoernauniversity.ac.id/";
+                        const sendReplyMessage = this.sendMessage(userIdMessage, replyMessage);
+                    }
+        
+                }
             }
 
         };
