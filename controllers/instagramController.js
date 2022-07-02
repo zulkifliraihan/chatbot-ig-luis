@@ -31,7 +31,7 @@ class InstagramController {
 
    async messageInbox() {
        let i = 0;
-        setInterval(async() => {
+        // setInterval(async() => {
 
             const messageInbox = await ig.feed.directInbox().items();
         
@@ -42,21 +42,26 @@ class InstagramController {
                 console.log(arrDataMessage);
                 const userIdMessage = arrDataMessage.user_id;
                 const textMessage = arrDataMessage.text;
+                const typeMessage = arrDataMessage.item_type;
                 
                 const matchingId = userIdMessage != idIgPrimary;
 
                 if (matchingId) {
-
-                    const resultRecognizeMessage = await new luisRecognizeMessage().recognizer(textMessage);
-                    const sendReplyMessage = this.sendMessage(userIdMessage, resultRecognizeMessage);
-                    
+                    if (typeMessage == "text") {
+                        const resultRecognizeMessage = await new luisRecognizeMessage().recognizer(textMessage);
+                        const sendReplyMessage = this.sendMessage(userIdMessage, resultRecognizeMessage);
+                    }
+                    else {
+                        const replyMessage = "Sorry we can't understand what you mean. Could you clarify again that again?. Or you can access our website for different information https://www.sampoernauniversity.ac.id/";
+                        const sendReplyMessage = this.sendMessage(userIdMessage, replyMessage);
+                    }
                 }
 
             }));
 
-            console.log(`Done Interval Part : ${i++}`);
+            // console.log(`Done Interval Part : ${i++}`);
 
-        }, 100000);
+        // }, 10000);
 
     }
 

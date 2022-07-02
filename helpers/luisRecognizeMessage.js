@@ -8,11 +8,15 @@ class luisRecognizeMessage {
 
     async recognizer(textMessage) {
         
-        // Call LUIS and gather any potential intents details. (Note the TurnContext has the response to the prompt)
+        console.log("The Message :  ", textMessage);
 
+        // Call LUIS and gather any potential intents details. (Note the TurnContext has the response to the prompt)
         const luisResult = await luisRecognizer.executeLuisQuery(textMessage);
 
+        console.log("Luis Result : " , luisResult);
+        
         const luisTopIntent = LuisRecognizer.topIntent(luisResult);
+        console.log("Luis Top Intent : " , luisTopIntent);
         
         let replyMessage = `Sorry we can't understand what you mean. Could you clarify again that again?. Or you can access our website for different information https://www.sampoernauniversity.ac.id/`;
 
