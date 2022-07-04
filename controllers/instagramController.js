@@ -31,7 +31,7 @@ class InstagramController {
 
    async messageInbox() {
        let i = 0;
-        // setInterval(async() => {
+        setInterval(async() => {
 
             const messageInbox = await ig.feed.directInbox().items();
         
@@ -59,9 +59,9 @@ class InstagramController {
 
             }));
 
-            // console.log(`Done Interval Part : ${i++}`);
+            console.log(`Done Interval Part : ${i++}`);
 
-        // }, 10000);
+        }, 60000);
 
     }
 
