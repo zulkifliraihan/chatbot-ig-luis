@@ -39,7 +39,6 @@ class InstagramController {
                 
                 const arrDataMessage = element.last_permanent_item;
     
-                console.log(arrDataMessage);
                 const userIdMessage = arrDataMessage.user_id;
                 const textMessage = arrDataMessage.text;
                 const typeMessage = arrDataMessage.item_type;
@@ -61,12 +60,12 @@ class InstagramController {
 
             console.log(`Done Interval Part : ${i++}`);
 
-        }, 60000);
+        }, 90000);
 
     }
 
     async sendMessage (userIdMessage, textMessage) {
-        console.log(userIdMessage, textMessage);
+        console.log(userIdMessage, " : ", textMessage);
         const thread = ig.entity.directThread([userIdMessage.toString()]);
         await thread.broadcastText(textMessage);
     }
