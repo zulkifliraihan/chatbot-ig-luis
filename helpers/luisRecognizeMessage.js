@@ -69,7 +69,16 @@ class luisRecognizeMessage {
     
             default: {
                 // Catch all for unhandled intents
-                replyMessage = `Sorry we can't understand what you mean. Could you clarify again that again?. Or you can access our website for different information https://www.sampoernauniversity.ac.id/`;
+                replyMessage = `
+                    Sorry, we can't understand what you mean. Can you clarify that again? So far, this bot has covered several topics related to Frequently Asked Questions (FAQ), such as:
+- Scholarship Information
+- Tuition Fee
+- Double Degree Program
+- How to Apply
+- Sampoerna University's Facilities
+- Student Acceptance Period                    
+                `;
+                // replyMessage = `Sorry we can't understand what you mean. Could you clarify again that again?. Or you can access our website for different information https://www.sampoernauniversity.ac.id/`;
             }
         }
 
