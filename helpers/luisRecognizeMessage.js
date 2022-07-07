@@ -73,7 +73,8 @@ class luisRecognizeMessage {
     - Information Systems
 3. Faculty of Education (FOE)
     - English Language Education
-    - Mathematics Education`
+    - Mathematics Education
+                Double degree with Arizona University is available for Faculty of Engineering and Technology: Mechanical Engineering, Industrial Engineering, Computer Science / Electrical Computer Engineering, and Information System / Applied Computing. Then, for Faculty of Business is available only for Management.`
                 break;
             }
 
