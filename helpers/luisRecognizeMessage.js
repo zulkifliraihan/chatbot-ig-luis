@@ -78,14 +78,14 @@ Double degree with Arizona University is available for Faculty of Engineering an
             }
 
             case 'facilities': {
-                replyMessage = `Sampoerna University provides various facilities for all provided programs:
+                replyMessage = `
+                Sampoerna University provides various facilities for all provided programs:
 - Stock Exchange Corner for Business students wishing to practice trading either on their own or from a scheduled guide
 - Library facilities with resources extending to UA Online resource, Broward Online resources, and database providers JSTOR, Emerald, and E-book central
 - Transfer Guidance counselors at SPAC (Student-Parent Advisory Center) to help and assist students in transferring credits to the US.
 - Full standard learning facilities such as full ICT facilities, Wi-Fi access, and personal study space.
                     
-                We have the virtual campus tour; you can access it on: https://panomatics.com/virtualtours/in/sampoernauniversity/index.html
-or if you want to schedule a visit or an appointment please call 021 502 22 234 xt.7878 or on our hotline on 0821 62 800 800.
+We have the virtual campus tour; you can access it on: https://panomatics.com/virtualtours/in/sampoernauniversity/index.html or if you want to schedule a visit or an appointment please call 021 502 22 234 xt.7878 or on our hotline on 0821 62 800 800.
 Or you can simply email us at student.recruitment@sampoernauniversity.ac.id`
                 break;
             }
@@ -105,13 +105,13 @@ Please call 021 502 22 234 or on our hotline on 0821 62 800 800
             default: {
                 // Catch all for unhandled intents
                 replyMessage = `
-                    Sorry, we can't understand what you mean. Can you clarify that again? So far, this bot has covered several topics related to Frequently Asked Questions (FAQ), such as:    
+                Sorry, we cannot understand what you mean. Can you clarify that again? So far, this bot has covered several topics related to Frequently Asked Questions (FAQ), such as:    
 - Scholarship Information
 - Tuition Fee
 - Double Degree Program
 - How to Apply
-- Sampoerna University's Facilities
-- Student Acceptance Period                    
+- Sampoerna University Facilities
+- Student Acceptance Period                 
                 `;
                 // replyMessage = `Sorry we can't understand what you mean. Could you clarify again that again?. Or you can access our website for different information https://www.sampoernauniversity.ac.id/`;
             }
