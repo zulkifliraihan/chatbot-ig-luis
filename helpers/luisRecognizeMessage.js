@@ -38,16 +38,14 @@ class luisRecognizeMessage {
             }
 
             case 'doubledegree': {
-                replyMessage = `
-                In the first and second year, students will obtain general education curriculum from Broward College and Sampoerna University.
-                In the third and fourth year, they will obtain curriculum from University of Arizona and/or Sampoerna University at the same time.
-                More information about our major please go to: https://www.sampoernauniversity.ac.id/academics/`
+                replyMessage = `In the first and second year, students will obtain general education curriculum from Broward College and Sampoerna University.
+In the third and fourth year, they will obtain curriculum from University of Arizona and/or Sampoerna University at the same time.
+More information about our major please go to: https://www.sampoernauniversity.ac.id/academics/`
                 break;
             }
 
             case 'admission': {
-                replyMessage = `
-                Just login to https://www.sampoernauniversity.ac.id/admissions/how-to-apply/ and follow the simple step below:
+                replyMessage = `Just login to https://www.sampoernauniversity.ac.id/admissions/how-to-apply/ and follow the simple step below:
 - Fill in the online application form
 - Submit scan/copy of your last one year transcript (semester 1&2 report card of your last grade)
 - Pay IDR 500,000 application fee (non-refundable)
@@ -74,7 +72,8 @@ class luisRecognizeMessage {
 3. Faculty of Education (FOE)
     - English Language Education
     - Mathematics Education
-                Double degree with Arizona University is available for Faculty of Engineering and Technology: Mechanical Engineering, Industrial Engineering, Computer Science / Electrical Computer Engineering, and Information System / Applied Computing. Then, for Faculty of Business is available only for Management.`
+
+Double degree with Arizona University is available for Faculty of Engineering and Technology: Mechanical Engineering, Industrial Engineering, Computer Science / Electrical Computer Engineering, and Information System / Applied Computing. Then, for Faculty of Business is available only for Management.`
                 break;
             }
 
@@ -86,14 +85,14 @@ class luisRecognizeMessage {
 - Full standard learning facilities such as full ICT facilities, Wi-Fi access, and personal study space.
                     
                 We have the virtual campus tour; you can access it on: https://panomatics.com/virtualtours/in/sampoernauniversity/index.html
-                or if you want to schedule a visit or an appointment please call 021 502 22 234 xt.7878 or on our hotline on 0821 62 800 800.
-                Or you can simply email us at student.recruitment@sampoernauniversity.ac.id`
+or if you want to schedule a visit or an appointment please call 021 502 22 234 xt.7878 or on our hotline on 0821 62 800 800.
+Or you can simply email us at student.recruitment@sampoernauniversity.ac.id`
                 break;
             }
 
             case 'acceptanceperiod': {
                 replyMessage = `We have 2 intake, Fall (September) & Spring (January)
-                Please call 021 502 22 234 or on our hotline on 0821 62 800 800
+Please call 021 502 22 234 or on our hotline on 0821 62 800 800
                 `
                 break;
             }
