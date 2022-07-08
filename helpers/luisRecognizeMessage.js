@@ -85,7 +85,7 @@ class luisRecognizeMessage {
 - Transfer Guidance counselors at SPAC (Student-Parent Advisory Center) to help and assist students in transferring credits to the US.
 - Full standard learning facilities such as full ICT facilities, Wi-Fi access, and personal study space.
                     
-                We have the virtual campus tour; you can access it on: https://panomatics.com/virtualtours/in/sampoernauniversity/index.html
+We have the virtual campus tour; you can access it on: https://panomatics.com/virtualtours/in/sampoernauniversity/index.html
                 or if you want to schedule a visit or an appointment please call 021 502 22 234 xt.7878 or on our hotline on 0821 62 800 800.
                 Or you can simply email us at student.recruitment@sampoernauniversity.ac.id`
                 break;
