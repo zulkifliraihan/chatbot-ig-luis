@@ -23,97 +23,71 @@ class luisRecognizeMessage {
         switch (luisTopIntent) {
             
             case 'greetings': {
-                replyMessage = 'Hi, I’m a bot. What can I help for you?';
+                replyMessage = 'Hi, my name is Jasmine. I’m Bot AI. What can I help for you?';
                 break;
             }
 
             case 'scholarship': {
-                replyMessage = 'Sampoerna University offers different types of Merit Awards ranging from 25% up to 100% .  For more detail, please call 021 520 22 234 xt.7878 or on our hotline on 0821 62 800 800. Or you can simply email us at student.recruitment@sampoernauniversity.ac.id';
+                replyMessage = 'STT Terpadu Nurul FIkri offers different types of Scholarship up to 100% .  For more detail, please call 021-786.3191 or on our whatsapp on 0857-1624-3174. Or you can simply email us at info@nurulfikri.ac.id';
                 break;
             }
 
             case 'fee': {
-                replyMessage = 'Please go to https://www.sampoernauniversity.ac.id/admissions/tuition-and-fees/'
-                break;
-            }
-
-            case 'doubledegree': {
-                replyMessage = `In the first and second year, students will obtain general education curriculum from Broward College and Sampoerna University.
-In the third and fourth year, they will obtain curriculum from University of Arizona and/or Sampoerna University at the same time.
-More information about our major please go to: https://www.sampoernauniversity.ac.id/academics/`
+                replyMessage = 'Please go to https://nurulfikri.ac.id/penerimaan-mahasiswa-baru/ for information fee about study'
                 break;
             }
 
             case 'admission': {
-                replyMessage = `Just login to https://www.sampoernauniversity.ac.id/admissions/how-to-apply/ and follow the simple step below:
+                replyMessage = `Just login to https://admisi.nurulfikri.ac.id/ and follow the simple step below:
+- Pay IDR 300,000 application fee (non-refundable)
 - Fill in the online application form
-- Submit scan/copy of your last one year transcript (semester 1&2 report card of your last grade)
-- Pay IDR 500,000 application fee (non-refundable)
-- Schedule your Placement Test
-- Take our English & Math entrance test:
-    a. 1st test - Basic Skill Test (English Reading, Writing, Listening
-    b. 2nd test - Advanced Skill Test (English Reading, Writing, Mathematic)`
+- Submit scan/copy of your last one year transcript (semester 1-7 report card of your last grade)
+- Take our English & Math entrance test`
                 break;
             }
 
             case 'faculty': {
-                replyMessage = `In the Sampoerna University, we have 3 faculty, such as:
-1. Faculty of Business (FoB)
-    - Entrepreneurship
-    - Banking & Finance
-    - Digital Marketing
-    - Accounting
-2. Faculty of Engineering and Technology (FET)
-    - Mechanical Engineering
-    - Industrial Engineering
-    - Visual Communication Design
-    - Computer Science / (Electrical and Computer Engineering)
-    - Information Systems
-3. Faculty of Education (FOE)
-    - English Language Education
-    - Mathematics Education
-
-Double degree with Arizona University is available for Faculty of Engineering and Technology: Mechanical Engineering, Industrial Engineering, Computer Science / Electrical Computer Engineering, and Information System / Applied Computing. Then, for Faculty of Business is available only for Management.`
+                replyMessage = `In the STT Terpadu Nurul Fikri, we have 3 faculty, such as:
+- Bisnis Digital
+- Sistem Informasi
+- Teknik Informatika`
                 break;
             }
 
             case 'facilities': {
                 replyMessage = `
-                Sampoerna University provides various facilities for all provided programs:
-- Stock Exchange Corner for Business students wishing to practice trading either on their own or from a scheduled guide
-- Library facilities with resources extending to UA Online resource, Broward Online resources, and database providers JSTOR, Emerald, and E-book central
-- Transfer Guidance counselors at SPAC (Student-Parent Advisory Center) to help and assist students in transferring credits to the US.
+                STT Terpadu Nurul Fikri provides various facilities for all provided programs:
+- Auditorium
+- Musholla B2 
+- Library
 - Full standard learning facilities such as full ICT facilities, Wi-Fi access, and personal study space.
-                    
-We have the virtual campus tour; you can access it on: https://panomatics.com/virtualtours/in/sampoernauniversity/index.html or if you want to schedule a visit or an appointment please call 021 502 22 234 xt.7878 or on our hotline on 0821 62 800 800.
-Or you can simply email us at student.recruitment@sampoernauniversity.ac.id`
+
+if you want to schedule a visit or an appointment please call 021-786.3191 or on our whatsapp on 0857-1624-3174.
+Or you can simply email us at info@nurulfikri.ac.id`
                 break;
             }
 
             case 'acceptanceperiod': {
-                replyMessage = `We have 2 intake, Fall (September) & Spring (January)
-Please call 021 502 22 234 or on our hotline on 0821 62 800 800
+                replyMessage = `We acceptance period on September
+Please call 021-786.3191 or on our whatsapp on 0857-1624-3174.
                 `
                 break;
             }
 
             case 'thanks': {
-                replyMessage = 'You’re welcome. I am very happy to help you.'
+                replyMessage = 'You’re welcome. I am very happy to help you. Sayonara. See you'
                 break;
             }
     
             default: {
                 // Catch all for unhandled intents
-                replyMessage = `
-                Sorry, we cannot understand what you mean. Can you clarify that again? So far, this bot has covered several topics related to Frequently Asked Questions (FAQ), such as:    
+                replyMessage = `Sorry, we cannot understand what you mean. Can you clarify that again? So far, this bot has covered several topics related to Frequently Asked Questions (FAQ), such as:    
 - Scholarship Information
 - Tuition Fee
-- Double Degree Program
 - How to Apply
-- Sampoerna University Facilities
+- STT Terpadu Nurul Fikri Facilities
 - Student Acceptance Period                 
                 `;
-                // replyMessage = `Sorry we can't understand what you mean. Could you clarify again that again?. Or you can access our website for different information https://www.sampoernauniversity.ac.id/`;
             }
         }
 

@@ -1,6 +1,6 @@
 # instagrambotsu
 
-Instagram Bot SU Node 16
+Instagram Bot Node 16
 
 This bot has been created using [Bot Framework](https://dev.botframework.com), it shows how to:
 

@@ -38,7 +38,7 @@ class InstagramController {
             await Promise.all(messageInbox.map(async (element) => {
                 
                 const arrDataMessage = element.last_permanent_item;
-    
+                console.log(arrDataMessage);
                 const userIdMessage = arrDataMessage.user_id;
                 const textMessage = arrDataMessage.text;
                 const typeMessage = arrDataMessage.item_type;
@@ -109,7 +109,13 @@ class InstagramController {
 
                     }
                     else {
-                        const replyMessage = "Sorry we can't understand what you mean. Could you clarify again that again?. Or you can access our website for different information https://www.sampoernauniversity.ac.id/";
+                        const replyMessage = `Sorry, we cannot understand what you mean. Can you clarify that again? So far, this bot has covered several topics related to Frequently Asked Questions (FAQ), such as:    
+                        - Scholarship Information
+                        - Tuition Fee
+                        - How to Apply
+                        - STT Terpadu Nurul Fikri Facilities
+                        - Student Acceptance Period                 
+                        `;
                         const sendReplyMessage = this.sendMessage(userIdMessage, replyMessage);
                     }
         
